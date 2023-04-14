@@ -3,5 +3,6 @@ passlib==1.7.4
 WTForms==3.0.1
 flaskwebgui==1.0.3
 gunicorn==20.1.0
+flask_ckeditor==0.4.6
 Authlib~=1.2.0
 python-dotenv~=1.0.0
