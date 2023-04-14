@@ -1,0 +1,15 @@
+{% extends 'layout.html'%} {%block head%}
+<title>Создать пост</title>
+{% endblock head %} {%block body%}
+<div class="container">
+  <form method="post" class="form formPost centeredHorizontally">
+    {{form.postTitle(class_="input centeredHorizontally" , autocomplete="off")}}
+    {{form.postTags(class_="input centeredHorizontally" , autocomplete="off")}}
+      <small>(разделите запятой)</small>
+      {{form.postDescription(class_="input centeredHorizontally" , autocomplete="off")}}
+
+    {{form.postContent(class_="editor", autocomplete="off")}}
+    <button type="submit" class="btn btnPrimary" style="margin-top: 10px">Отправить</button>
+  </form>
+</div>
+{% endblock body %}

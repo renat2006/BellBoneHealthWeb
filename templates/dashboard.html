@@ -1,0 +1,69 @@
+{% extends 'layout.html'%} {%block head%} {% if request.path == "/admin/posts"
+%}
+<title>Админ-панель --> Посты</title>
+{% else %}
+<title>Дашборд {{session["userName"]}}</title>
+{% endif %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/dashboard.css') }}"
+/>
+{% endblock head %} {%block body%} {% if showPosts %}
+<h1 class="textCenter">Посты</h1>
+{% for post in posts %}
+<div class="post centeredHorizontally">
+  <a class="title textPrimary" href="/post/{{post[0]}} ">{{post[1]}}</a>
+  <div class="content" tag="content">{{post[3]|safe}}</div>
+  <section>
+    <a href="/editpost/{{post[0]}}" class="btn btnLink textPrimary">редактировать</a>
+    <a
+      href="/deletepost/{{post[0]}}/redirect=dashboard&{{session['userName'].lower()}}"
+      class="btn btnLink textPrimary"
+      >удалить</a
+    >
+  </section>
+  <div class="info">
+    <p>Тэги: {{post[2]}}</p>
+    <p>Просмотры: {{post[7]}}</p>
+  </div>
+  <div class="info">
+    <p>Время создания: {{post[6]}}</p>
+    <p>Последнее редактирование: {{post[9]}}</p>
+  </div>
+  <div class="info">
+    <p>Время создания: {{post[5]}}</p>
+    <p>Последнее редактирование: {{post[8]}}</p>
+  </div>
+  {% if request.path == "/admin/posts" %}
+  <p>
+    Автор:
+    <a href="/user/{{post[4].lower()}}" class="textPrimary">{{post[4]}}</a>
+  </p>
+  {% endif %}
+</div>
+{% endfor %} {% elif not showPosts %} {% if request.path == "/admin/posts" %}
+<h1>У этого пользователя пока нет постов</h1>
+{% else %}
+<p class="userDashboardNoPost">
+  У вас ещё нет постов
+  <a href="/createpost" class="textPrimary">создать пост</a> ?
+</p>
+{% endif %} {% endif %} {% if showComments and not request.path ==
+"/admin/posts"%}
+<h1 class="textCenter">Комментарии</h1>
+{% for comment in comments %}
+<div class="post centeredHorizontally">
+  <div class="content" tag="content">{{comment[2]|safe}}</div>
+  <section class="comment">
+    <p class="commentCreationDate">Дата создания: {{comment[4]}}</p>
+    <p class="commentCreationTime">Время создания: {{comment[5]}}</p>
+  </section>
+  <a href="/post/{{comment[1]}}" class="btn btnLink textPrimary">перейти к посту</a>
+</div>
+{% endfor %} {% endif %} {% if request.path == "/admin/posts" %}
+<a href="/admin" class="btn btnLink textPrimary">↩️вернуться в админ-панель</a>
+{% endif %} {% endblock body %}

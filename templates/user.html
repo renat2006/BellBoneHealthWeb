@@ -1,0 +1,76 @@
+{% extends 'layout.html'%} {%block head%}
+<title>{{user[1]}}</title>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/user.css') }}"
+/>
+{% endblock head %} {%block body%}
+<div class="container">
+  <div class="userContainer">
+    <section class="head">
+      <img src="{{user[4]}}" alt="{{user[1]}}" class="userProfilePicture" />
+      <h2 class="userName {{ userNameColor }}-gradient-text">{{user[1]}}</h2>
+    </section>
+  <section class="stats">
+      <div class="record-frame {{ frame_color }}">
+
+  <span class="record-steps-icon">🏃‍♂️</span> <!-- Иконка шагов -->
+  <span class="record-steps-label">{{ steps }} шагов</span>
+          {% if show_login_text %}
+          <span class="record-steps-label">Войдите через Google, чтобы увидеть статистику</span>
+          {% endif %}
+  <!-- Содержимое рамки  -->
+</div>
+    </section>
+    <section class="stats">
+      <p class="userRole">Роль: {{user[5]}}</p>
+      <p class="userViews">Просмотры: {{views}}</p>
+    </section>
+    <section class="stats">
+      <p class="userCreationDate">Зарегистрировался: {{user[7]}}</p>
+      <p class="userPoint">Очки: {{user[6]}}</p>
+    </section>
+    <section class="stats">
+      {% if session["userName"] == user[1] %}
+      <a href="/accountsettings" class="btn btnLink textPrimary"
+        >настройки аккаунта</a
+      >
+      <a href="/dashboard/{{user[1]}}" class="btn btnLink textPrimary"
+        >dashboard</a
+      >
+      {% endif %} {% if user[5] == "admin" and session["userName"] == user[1] %}
+      <a href="/admin" class="btn btnLink textPrimary">админ-панель</a>
+      {% endif %}
+    </section>
+    {% if "userName" in session and session['userName'] == "{{user[1]}}"%}
+    <a href="/dashboard/{{session['userName']}}">дашборд</a>
+    {% endif %}
+  </div>
+  {% if showPosts %}
+  <h1 class="postsText">Посты</h1>
+  {% for post in posts %}
+  <div class="post centeredHorizontally">
+    <a class="title textPrimary" href="/post/{{post[0]}}">{{post[1]}}</a>
+    <div class="content" tag="content">{{post[3]|safe}}</div>
+    <a href="/post/{{post[0]}}" class="btn btnLink">перейти к посту</a>
+  </div>
+  {% endfor %} {% endif %} {% if showComments %}
+  <h1 class="commentsText">Комментарии </h1>
+  {% for comment in comments %}
+  <div class="post centeredHorizontally">
+    <div class="content" tag="content">{{comment[2]|safe}}</div>
+    <section class="comment">
+      <p class="commentCreationDate">Дата создания: {{comment[4]}}</p>
+      <p class="commentCreationTime">Дата редактирования: {{comment[5]}}</p>
+    </section>
+    <a href="/post/{{comment[1]}}" class="btn btnLink textPrimary"
+      >перейти к посту</a
+    >
+  </div>
+  {% endfor %} {% endif %}
+</div>
+{% endblock body %}
