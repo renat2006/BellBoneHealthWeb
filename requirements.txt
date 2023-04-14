@@ -7,3 +7,4 @@ flask_ckeditor==0.4.6
 Authlib~=1.2.0
 python-dotenv~=1.0.0
 requests==2.28.2
+pytz==2023.3
