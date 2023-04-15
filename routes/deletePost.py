@@ -18,13 +18,14 @@ def deletePost(postID, direct):
             cursor.execute(f"select author from posts where id = {postID}")
             author = cursor.fetchone()
             direct = direct.replace("&", "/")
+
             match author[0] == session["userName"]:
                 case True:
                     cursor.execute(f"delete from posts where id = {postID}")
                     cursor.execute(f"update sqlite_sequence set seq = seq-1")
                     connection.commit()
                     message("2", f'POST: "{postID}" DELETED')
-                    return redirect(f"/{direct}")
+                    return redirect(f"/")
                 case False:
                     message(
                         "1",
