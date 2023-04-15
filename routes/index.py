@@ -9,6 +9,7 @@ from helpers import (
 indexBlueprint = Blueprint("index", __name__)
 
 
+
 @indexBlueprint.route("/")
 def index():
     if "userName" in session:
