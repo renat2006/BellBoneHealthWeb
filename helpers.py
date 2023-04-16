@@ -137,12 +137,15 @@ def getStepCounts(days=1):
     session['google_fit_data'] = response.json()
     print(session['google_fit_data'])
     step_counts = []
-    for bucket in session['google_fit_data']['bucket']:
-        for dataset in bucket['dataset']:
-            for point in dataset['point']:
-                for value in point['value']:
-                    if value['intVal']:
-                        step_counts.append(value['intVal'])
+    try:
+        for bucket in session['google_fit_data']['bucket']:
+            for dataset in bucket['dataset']:
+                for point in dataset['point']:
+                    for value in point['value']:
+                        if value['intVal']:
+                            step_counts.append(value['intVal'])
+    except BaseException as e:
+        step_counts = 0
 
     session["step_count"] = sum(step_counts)
     return session["step_count"]
