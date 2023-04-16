@@ -1,114 +1,118 @@
 .post {
-  display: flex;
-  flex-direction: column;
-  max-width: 50rem;
-  margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 50rem;
+    margin-top: 1.5rem;
 }
 
 .post h1 {
-  text-align: center;
+    text-align: center;
 }
 
 .title {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 .bottomBar {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
 }
 
 .linkLogin {
-  color: var(--primaryColor);
-  transition: 0.25s;
+    color: var(--primaryColor);
+    transition: 0.25s;
 }
 
 .linkLogin:hover {
-  color: var(--themePrimary);
+    color: var(--themePrimary);
 }
 
 .comment {
-  display: block;
-  width: 25rem;
-  height: 8rem;
-  background-color: transparent;
-  border: none;
-  resize: none;
-  padding: 1rem;
-  font-size: 0.8rem;
+    display: block;
+    width: 25rem;
+    height: 8rem;
+    background-color: transparent;
+    border: none;
+    resize: none;
+    padding: 1rem;
+    font-size: 0.8rem;
 }
 
 .comment:focus {
-  outline: none;
+    outline: none;
 }
 
 small {
-  margin: 0;
-  font-size: 0.75rem;
+    margin: 0;
+    font-size: 0.75rem;
 }
 
 .btnSubmit {
-  background-color: var(--primaryColor);
-  color: var(--themeSecondary);
-  border: 0px;
-  border-radius: 1rem;
-  height: 2rem;
-  width: 5rem;
-  font-size: 0.75rem;
-  transition: 0.25s;
-  margin: auto 0.5rem 0.5rem 0rem;
-  cursor: pointer;
+    background-color: var(--primaryColor);
+    color: var(--themeSecondary);
+    border: 0px;
+    border-radius: 1rem;
+    height: 2rem;
+    width: 5rem;
+    font-size: 0.75rem;
+    transition: 0.25s;
+    margin: auto 0.5rem 0.5rem 0rem;
+    cursor: pointer;
 }
 
 .btnSubmit:hover {
-  background-color: transparent;
-  color: var(--primaryColor);
+    background-color: transparent;
+    color: var(--primaryColor);
 }
 
 .commentForm {
-  margin: 2rem auto 0 auto;
-  display: flex;
-  justify-content: space-between;
-  width: fit-content;
-  border: 1px solid var(--primaryColor);
-  border-radius: 1rem;
+    margin: 2rem auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    border: 1px solid var(--primaryColor);
+    border-radius: 1rem;
 }
 
 .comments {
-  margin: 3rem auto 0 auto;
-  width: 32rem;
-  font-size: 0.75rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
+    margin: 3rem auto 0 auto;
+    width: 32rem;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .commentUserNameContainer {
-  font-size: 0.7rem;
-  margin-right: 2rem;
+    font-size: 0.7rem;
+    margin-right: 2rem;
 }
 
 .commentUserNameContainer p {
-  margin: 0;
+    margin: 0;
 }
 
 .profilePicture {
-  margin-right: 0.6rem;
+    margin-right: 0.6rem;
 }
 
 .dateTime h5 {
-  text-align: right;
+    text-align: right;
 }
 
 
 @media screen and (max-width: 600px) {
-  .comments, .comments small {
-    max-width: 100% !important;
-  }
+    .comments, .comments small {
+        max-width: 100% !important;
+    }
 
-  .navbar * {
-    width: 100%;
-  }
+    .navbar * {
+        width: 100%;
+    }
+}
+
+img {
+    max-width: 512px;
 }
